@@ -41,18 +41,24 @@ tf.flags.DEFINE_integer(
     'num_classes', 110, 'Number of Classes')
 FLAGS = tf.flags.FLAGS
 
-#CHECKPOINTS_DIR = './checkpoints/'
+CHECKPOINTS_DIR = './models/'
+'''
 model_checkpoint_map = {
     'inception_v1': os.path.join(FLAGS.checkpoint_path1),
     'resnet_v1_50': os.path.join(FLAGS.checkpoint_path2),
-    	  'vgg_16': os.path.join(FLAGS.checkpoint_path3)}
+    	  'vgg_16': os.path.join(FLAGS.checkpoint_path3)}'''
+
+model_checkpoint_map = {
+    'inception_v1': os.path.join(CHECKPOINTS_DIR,'inception_v1', 'inception_v1.ckpt'),
+    'resnet_v1_50': os.path.join(CHECKPOINTS_DIR, 'resnet_v1_50','model.ckpt-49800'),
+    'vgg_16': os.path.join(CHECKPOINTS_DIR, 'vgg_16', 'vgg_16.ckpt')}
 
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
 max_epsilon = 16.0
 num_iter = 5
-batch_size = 5
+batch_size = 11
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
@@ -87,7 +93,7 @@ def load_images_with_true_label(input_dir):
         filenames.append(filename)
         true_labels.append(filename2label[filename])
         idx += 1
-        if idx == 5:
+        if idx == batch_size:
             images = np.array(images)
             yield filenames, images, true_labels
             filenames = []
@@ -214,3 +220,4 @@ if __name__=='__main__':
     #tf.run.app()
     non_target_mi_fgsm_attack(FLAGS.input_dir, FLAGS.output_dir)
     pass
+
