@@ -42,11 +42,6 @@ tf.flags.DEFINE_integer(
 FLAGS = tf.flags.FLAGS
 
 CHECKPOINTS_DIR = './models/'
-'''
-model_checkpoint_map = {
-    'inception_v1': os.path.join(FLAGS.checkpoint_path1),
-    'resnet_v1_50': os.path.join(FLAGS.checkpoint_path2),
-    	  'vgg_16': os.path.join(FLAGS.checkpoint_path3)}'''
 
 model_checkpoint_map = {
     'inception_v1': os.path.join(CHECKPOINTS_DIR,'inception_v1', 'inception_v1.ckpt'),
@@ -58,7 +53,7 @@ model_checkpoint_map = {
 
 max_epsilon = 16.0
 num_iter = 10
-batch_size = 1
+batch_size = 11
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
