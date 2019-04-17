@@ -45,16 +45,16 @@ FLAGS = tf.flags.FLAGS
 # 声明一些攻击参数
 #CHECKPOINTS_DIR = './checkpoints/'
 model_checkpoint_map = {
-    'inception_v1': os.path.join(FLAG.checkpoint_path1),
-    'resnet_v1_50': os.path.join(FLAG.checkpoint_path2),
-    'vgg_16': os.path.join(FLAG.checkpoint_path3)}
+    'inception_v1': os.path.join(FLAGS.checkpoint_path1),
+    'resnet_v1_50': os.path.join(FLAGS.checkpoint_path2),
+    	  'vgg_16': os.path.join(FLAGS.checkpoint_path3)}
 
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
 max_epsilon = 16.0
 num_iter = 15
-batch_size = 11
+batch_size = 5
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
@@ -89,7 +89,7 @@ def load_images_with_true_label(input_dir):
         filenames.append(filename)
         true_labels.append(filename2label[filename])
         idx += 1
-        if idx == 11:
+        if idx == 5:
             images = np.array(images)
             yield filenames, images, true_labels
             filenames = []
@@ -213,7 +213,6 @@ def non_target_mi_fgsm_attack(input_dir, output_dir):
 if __name__=='__main__':
     #input_dir = '/path/to/dev_data'
     #output_dir = '/path/to/output'
-    non_target_mi_fgsm_attack(FLAG.input_dir, FLAG.output_dir)
+    #tf.run.app()
+    non_target_mi_fgsm_attack(FLAGS.input_dir, FLAGS.output_dir)
     pass
-
-
