@@ -54,7 +54,7 @@ model_checkpoint_map = {
 
 max_epsilon = 16.0
 num_iter = 15
-batch_size = 5
+batch_size = 11
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
@@ -89,7 +89,7 @@ def load_images_with_true_label(input_dir):
         filenames.append(filename)
         true_labels.append(filename2label[filename])
         idx += 1
-        if idx == 5:
+        if idx == 11:
             images = np.array(images)
             yield filenames, images, true_labels
             filenames = []
