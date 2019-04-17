@@ -1,4 +1,4 @@
-!/bin/bash
+# !/bin/bash
 #
 # run.sh is the entry point of the submission.
 # nvidia-docker run -v ${INPUT_DIR}:/input_images -v ${OUTPUT_DIR}:/output_images
