@@ -52,9 +52,9 @@ model_checkpoint_map = {
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
-max_epsilon = 32.0
+max_epsilon = 16.0
 num_iter = 15
-batch_size = 8
+batch_size = 11
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
