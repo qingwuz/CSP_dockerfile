@@ -57,8 +57,8 @@ model_checkpoint_map = {
 #output_dir = './out_image_nontar/'
 
 max_epsilon = 16.0
-num_iter = 5
-batch_size = 11
+num_iter = 10
+batch_size = 1
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
@@ -213,11 +213,13 @@ def non_target_mi_fgsm_attack(input_dir, output_dir):
         processed_imgs_ = sess.run(processed_imgs, feed_dict={raw_inputs: raw_images})
         adv_images = sess.run(x_adv, feed_dict={x_input: processed_imgs_, y: target_labels})
         save_images(adv_images, filenames, output_dir)
-
+        
+def main(_):
+    non_target_mi_fgsm_attack('.'+FLAGS.input_dir, '.'+FLAGS.output_dir)
 if __name__=='__main__':
     #input_dir = '/path/to/dev_data'
     #output_dir = '/path/to/output'
-    #tf.run.app()
-    non_target_mi_fgsm_attack('.' + FLAGS.input_dir, '.'+FLAGS.output_dir)
+    #non_target_mi_fgsm_attack(FLAG.input_dir, FLAG.output_dir)
+    tf.app.run()
     pass
 
