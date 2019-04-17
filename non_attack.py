@@ -218,6 +218,6 @@ if __name__=='__main__':
     #input_dir = '/path/to/dev_data'
     #output_dir = '/path/to/output'
     #tf.run.app()
-    non_target_mi_fgsm_attack(FLAGS.input_dir, FLAGS.output_dir)
+    non_target_mi_fgsm_attack('.' + FLAGS.input_dir, '.'+FLAGS.output_dir)
     pass
 
