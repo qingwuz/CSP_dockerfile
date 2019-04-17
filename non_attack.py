@@ -19,7 +19,14 @@ slim = tf.contrib.slim
 tf.logging.set_verbosity(tf.logging.ERROR)
 
 tf.flags.DEFINE_string(
-    'checkpoint_path', '', 'Path to checkpoint for inception network.')
+    'checkpoint_path1', '', 'Path to checkpoint for inception network.')
+
+tf.flags.DEFINE_string(
+    'checkpoint_path2', '', 'Path to checkpoint for inception network.')
+
+tf.flags.DEFINE_string(
+    'checkpoint_path3', '', 'Path to checkpoint for inception network.')
+
 tf.flags.DEFINE_string(
     'input_dir', '', 'Input directory with images.')
 tf.flags.DEFINE_string(
@@ -38,16 +45,16 @@ FLAGS = tf.flags.FLAGS
 # 声明一些攻击参数
 #CHECKPOINTS_DIR = './checkpoints/'
 model_checkpoint_map = {
-    'inception_v1': os.path.join(FLAG.checkpoint_path,'inception_v1', 'inception_v1.ckpt'),
-    'resnet_v1_50': os.path.join(FLAG.checkpoint_path, 'resnet_v1_50','model.ckpt-49800'),
-    'vgg_16': os.path.join(FLAG.checkpoint_path, 'vgg_16', 'vgg_16.ckpt')}
+    'inception_v1': os.path.join(FLAG.checkpoint_path1),
+    'resnet_v1_50': os.path.join(FLAG.checkpoint_path2),
+    'vgg_16': os.path.join(FLAG.checkpoint_path3)}
 
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
-max_epsilon = 16.0
-num_iter = 20
-# batch_size = 8
+max_epsilon = 32.0
+num_iter = 15
+batch_size = 8
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
