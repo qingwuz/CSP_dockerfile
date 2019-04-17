@@ -41,8 +41,6 @@ tf.flags.DEFINE_integer(
     'num_classes', 110, 'Number of Classes')
 FLAGS = tf.flags.FLAGS
 
-
-# 声明一些攻击参数
 #CHECKPOINTS_DIR = './checkpoints/'
 model_checkpoint_map = {
     'inception_v1': os.path.join(FLAGS.checkpoint_path1),
@@ -53,8 +51,8 @@ model_checkpoint_map = {
 #output_dir = './out_image_nontar/'
 
 max_epsilon = 16.0
-num_iter = 15
-batch_size = 11
+num_iter = 5
+batch_size = 5
 momentum = 1.0
 
 # 在图片数据输入模型前，做一些预处理
@@ -89,7 +87,7 @@ def load_images_with_true_label(input_dir):
         filenames.append(filename)
         true_labels.append(filename2label[filename])
         idx += 1
-        if idx == 11:
+        if idx == 5:
             images = np.array(images)
             yield filenames, images, true_labels
             filenames = []
