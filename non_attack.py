@@ -210,7 +210,7 @@ def non_target_mi_fgsm_attack(input_dir, output_dir):
         save_images(adv_images, filenames, output_dir)
         
 def main(_):
-    non_target_mi_fgsm_attack('.'+FLAGS.input_dir, '.'+FLAGS.output_dir)
+    non_target_mi_fgsm_attack(FLAGS.input_dir,FLAGS.output_dir)
 if __name__=='__main__':
     #input_dir = '/path/to/dev_data'
     #output_dir = '/path/to/output'
