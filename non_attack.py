@@ -51,10 +51,10 @@ model_checkpoint_map = {
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
-max_epsilon = 24.0
+max_epsilon = 16.0
 num_iter = 20
 batch_size = 11
-momentum = 1.15
+momentum = 1.05
 
 # 在图片数据输入模型前，做一些预处理
 def preprocess_for_model(images, model_type):
