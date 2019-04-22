@@ -51,7 +51,7 @@ model_checkpoint_map = {
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
-max_epsilon = 32.0
+max_epsilon = 24.0
 num_iter = 16
 batch_size = 11
 momentum = 1.0
@@ -151,7 +151,8 @@ def non_target_graph(x, y, i, x_max, x_min, grad):
   y = first_round * pred + (1 - first_round) * y
   one_hot = tf.one_hot(y, num_classes)
   ########################
-  logits = (end_points_inc_v1['Logits'] + end_points_res_v1_50['logits'] + end_points_vgg_16['logits']) / 3.0
+  #logits = (end_points_inc_v1['Logits'] + end_points_res_v1_50['logits'] + end_points_vgg_16['logits']) / 3.0
+  logits = end_points_inc_v1['Logits'] + end_points_res_v1_50['logits'] + end_points_vgg_16['logits']
   cross_entropy = tf.losses.softmax_cross_entropy(one_hot,
                                                   logits,
                                                   label_smoothing=0.0,
