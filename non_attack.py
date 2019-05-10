@@ -51,8 +51,8 @@ model_checkpoint_map = {
 #input_dir = './dev_data_nontar/'
 #output_dir = './out_image_nontar/'
 
-max_epsilon = 24.0
-num_iter = 16
+max_epsilon = 32.0
+num_iter = 20
 batch_size = 11
 momentum = 1.0
 
